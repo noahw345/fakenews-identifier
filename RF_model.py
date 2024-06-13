@@ -3,11 +3,41 @@ from collections import Counter
 import nltk
 import math
 import time
-import movies_data_utils as mdu
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+from sklearn.feature_extraction.text import TfidfVectorizer
+import pandas as pd
 
-NUM_TRAINING_EXAMPLES = 5
+def read_file(path: str) -> list:
+  """
+  Reads the contents of a file in line by line.
+  Args:
+    path (str): the location of the file to read
+
+  Returns:
+    list: list of strings, the contents of the file
+  """
+  # PROVIDED
+  f = open(path, "r", encoding="utf-8")
+  contents = f.readlines()
+  f.close()
+  return contents
+
+fake_path = "FakeNewsNet/dataset/politifact_fake.csv"
+df = pd.read_csv(fake_path)
+fake_titles = df['title'].tolist()
+print(fake_titles[0])  # Display the first few titles to verify
+
+# PROVIDED
+tfidf_vectorizer = TfidfVectorizer(max_features=500)
+# this will return a sparse matrix
+tfidf_matrix = tfidf_vectorizer.fit_transform(fake_titles)
+# change the sparse matrix to an array
+tfidf_matrix = tfidf_matrix.toarray()
+
+print("tfidf matrix: ", tfidf_matrix[0])
+non_zero_percent = np.count_nonzero(tfidf_matrix[0]) / len(tfidf_matrix[0])
+
 
 class RandomForestClassifier:
     # Calculate entropy of a probability distribution
