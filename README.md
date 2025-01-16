@@ -16,8 +16,8 @@ This project analyzes and compares fake and real news articles. It processes dat
 
 To get started, clone the repository and install the required packages.
 
-git clone https://github.com/noahw345/fakenews-identifier.git
-cd yourproject
+git clone https://github.com/noahw345/fakenews-identifier.git  
+cd fakenews-identifier  
 pip install -r requirements.txt
 
 ## Usage
