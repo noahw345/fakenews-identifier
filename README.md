@@ -16,7 +16,7 @@ This project analyzes and compares fake and real news articles. It processes dat
 
 To get started, clone the repository and install the required packages.
 
-git clone https://github.com/noahw345/Random-Forest-Classifier.git
+git clone https://github.com/noahw345/fakenews-identifier.git
 cd yourproject
 pip install -r requirements.txt
 
